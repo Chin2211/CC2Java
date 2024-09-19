@@ -1,0 +1,20 @@
+public class CalculatingRectangle {
+
+    public static void main(String[] args) {
+        // Predefined values for the length and width of the garden
+        double length = 10.0; // Example length in meters
+        double width = 5.0; // Example width in meters
+        
+        // Calculate the area of the rectangle
+        double area = length * width;
+        
+        // Calculate the perimeter of the rectangle
+        double perimeter = 2 * (length + width);
+        
+        // Display the result
+        System.out.println("length of the garden: " + length + " meters");
+        System.out.println("Width of the garden: " + width + " meters");
+        System.out.println("Area of the garden: " + area + " square meters");
+        System.out.println("Perimeter of the garden: " + perimeter + " meters");
+    }
+}
