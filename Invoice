@@ -1,0 +1,41 @@
+public class Invoice {
+    
+    public static void main(String[] args) {
+        // Store information
+        String storeName = "Chin convenience store";
+        String storeAddress = "Narra1, Baloganon, Masinloc, Zambales 2211";
+        
+        // Itemized list
+        String item1 = "Egg";
+        int quantity1 = 3;
+        double price1 = 00.25;
+        
+        String item2 = "Coke Soda";
+        int quantity2 = 2;
+        double price2 = 1.00;
+        
+        String item3 = "Yakult";
+        int quantity3 = 5;
+        double price3 = 00.20;
+
+        // Calculate total amount
+        double totalAmount = (quantity1 * price1) + (quantity2 * price2) + (quantity3 * price3);
+        
+        // Print the invoice
+        System.out.println("===========================================");
+        System.out.println(storeName);
+        System.out.println(storeAddress);
+        System.out.println("===========================================\n");
+        
+        System.out.println("Item\t\tQuantity\tPrice");
+        System.out.println("-------------------------------------------");
+        System.out.printf("%s\t\t%d\t\t$%.2f\n", item1, quantity1, price1);
+        System.out.printf("%s\t%d\t\t$%.2f\n", item2, quantity2, price2);
+        System.out.printf("%s\t\t%d\t\t$%.2f\n", item3, quantity3, price3);
+        
+        System.out.println("\n-------------------------------------------");
+        System.out.printf("Total Amount Due:\t\t$%.2f\n", totalAmount);
+        System.out.println("===========================================\n");
+        System.out.println("Thank you for shopping with us!");
+    }
+}
