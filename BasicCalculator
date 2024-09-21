@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class BasicCalculator {
+    public static void main(String[] args){
+        Scanner sc  = new Scanner(System.in);
+        System.out.println("Enter First number");
+        int fNum = sc.nextInt();
+        System.out.println("Enter Second number");
+        int sNum = sc.nextInt();
+        int sum = fNum + sNum;
+        int diff = fNum - sNum;
+        int prod = fNum * sNum;
+        int quo = fNum + sNum;
+        
+        
+        //System.out.println("Enter Second number");
+        
+        System.out.println("Sum is " +  sum );
+        System.out.println("Difference is " +  diff);
+        System.out.println("Product is " + prod);
+        System.out.println("Quotient is " + quo);
+    }
+    
+}
