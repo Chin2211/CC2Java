@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Cc2 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int fNum ;      // user input
+        int sNum ;      // user input
+        int tNum ;      // user input
+        
+        System.out.println("Input firt number: ");
+        fNum = input.nextInt();
+        System.out.println("Input second number: ");
+        sNum = input.nextInt();
+        System.out.println("Input third number: ");
+        tNum = input.nextInt();
+        
+        
+        if (fNum > sNum && fNum > tNum) {
+            System.out.println(fNum + "is larger than" + sNum);
+        } else if (sNum > fNum) {
+            System.out.println(sNum +"is larger than" +sNum);
+        } else if (tNum > fNum) {
+            System.out.println(tNum + "is larger than " + fNum);
+    }
+
+    }
+}
