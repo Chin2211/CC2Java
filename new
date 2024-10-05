@@ -1,0 +1,12 @@
+public class ExpressionEvaluation {
+    public static void main(String[] args) {
+        // Example value for f
+        int f = 10; // You can change this to any integer value
+
+        // Calculate the expression
+        int result = f - 5 + (3 * 1000 / 6);
+
+        // Output the result
+        System.out.println("The result of the expression is: " + result);
+    }
+}
