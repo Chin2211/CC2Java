@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the calculation:");
+        String input = scanner.nextLine();
+
+        String[] parts = input.split(" ");
+        double result = 0;
+
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].contains("hexadecimal")) {
+                String hexValue = parts[i].replace("hexadecimal", "");
+                result += Integer.parseInt(hexValue, 16);
+            } else if (parts[i].contains("octal")) {
+                String octalValue = parts[i].replace("octal", "");
+                result += Integer.parseInt(octalValue, 8);
+            } else if (parts[i].contains("binary")) {
+                String binaryValue = parts[i].replace("binary", "");
+                result += Integer.parseInt(binaryValue, 2);
+            } else if (parts[i].contains("+")) {
+                i++;
+                result += Double.parseDouble(parts[i]);
+            } else if (parts[i].contains("-")) {
+                i++;
+                result -= Double.parseDouble(parts[i]);
+            } else if (parts[i].contains("x")) {
+                i++;
+                result *= Double.parseDouble(parts[i]);
+            } else if (parts[i].contains("/")) {
+                i++;
+                result /= Double.parseDouble(parts[i]);
+            } else {
+                result = Double.parseDouble(parts[i]);
+            }
+        }
+
+        System.out.println("The result is: " + result);
+    }
+}
