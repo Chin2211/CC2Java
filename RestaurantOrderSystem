@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class OrderSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Display the menu
+        System.out.println("MENU");
+        System.out.println("1. Burger    - PHP 100");
+        System.out.println("2. Fries     - PHP  50");
+        System.out.println("3. Soda      - PHP  30");
+        System.out.println("4. Ice Cream - PHP  45");
+        System.out.println("5. Exit");
+
+        // Get user input for menu selection
+        System.out.print("Enter the menu number of your choice: ");
+        int choice = scanner.nextInt();
+
+        // Check if user wants to exit
+        if (choice == 5) {
+            System.out.println("Thank you! Goodbye.");
+            return;
+        }
+
+        // Get user input for quantity
+        System.out.print("Enter the quantity: ");
+        int quantity = scanner.nextInt();
+
+        // Variable to hold total amount
+        double totalAmount = 0;
+
+        // Use switch statement to process the selection
+        switch (choice) {
+            case 1:
+                totalAmount = 100 * quantity;
+                System.out.println("You ordered Burger.");
+                break;
+            case 2:
+                totalAmount = 50 * quantity;
+                System.out.println("You ordered Fries.");
+                break;
+            case 3:
+                totalAmount = 30 * quantity;
+                System.out.println("You ordered Soda.");
+                break;
+            case 4:
+                totalAmount = 45 * quantity;
+                System.out.println("You ordered Ice Cream.");
+                break;
+            default:
+                System.out.println("Invalid selection. Please try again.");
+                return; // Exit if invalid selection
+        }
+
+        // Display the total amount
+        System.out.printf("Total amount: PHP %.2f\n", totalAmount);
+    }
+}
