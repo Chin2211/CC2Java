@@ -3,8 +3,12 @@ import java.util.Scanner;
 public class OrderSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        
+        //declaration of variables
+        int choice,quantity;
+        double totalAmount;
 
-        // Display the menu
+        // menu list
         System.out.println("MENU");
         System.out.println("1. Burger    - PHP 100");
         System.out.println("2. Fries     - PHP  50");
@@ -14,7 +18,7 @@ public class OrderSystem {
 
         // Get user input for menu selection
         System.out.print("Enter the menu number of your choice: ");
-        int choice = scanner.nextInt();
+            choice = scanner.nextInt();
 
         // Check if user wants to exit
         if (choice == 5) {
@@ -24,10 +28,10 @@ public class OrderSystem {
 
         // Get user input for quantity
         System.out.print("Enter the quantity: ");
-        int quantity = scanner.nextInt();
+            quantity = scanner.nextInt();
 
         // Variable to hold total amount
-        double totalAmount = 0;
+            totalAmount = 0;
 
         // Use switch statement to process the selection
         switch (choice) {
