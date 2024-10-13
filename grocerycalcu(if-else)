@@ -14,13 +14,13 @@ public class GroceryDiscount {
 
         // Determine the discount based on the total amount
         if (totalAmount < 1000) {
-            discount = 0;
+            discount = 0; //no discount
         } else if (totalAmount >= 1000 && totalAmount <= 5000) {
-            discount = 0.05; // 5%
+            discount = 0.05; // 5% discount
         } else if (totalAmount > 5000 && totalAmount <= 10000) {
-            discount = 0.10; // 10%
+            discount = 0.10; // 10% discount
         } else {
-            discount = 0.15; // 15%
+            discount = 0.15; // 15% discount
         }
 
         // Calculate final price
