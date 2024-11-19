@@ -1,0 +1,55 @@
+/** Villaluna, Christian M.
+ * Retail Store Inventory Management 1d array
+ * nov.19, 2024
+ */
+import java.util.Scanner;
+
+public class RetailInventoryManagement {
+    public static void main(String[] args) {
+        final int NUM_PRODUCTS = 10; // Number of products
+        int[] stockLevels = new int[NUM_PRODUCTS]; // Array for stock levels
+        double[] prices = new double[NUM_PRODUCTS]; // Array for product prices
+        Scanner scanner = new Scanner(System.in); // Scanner for user input
+
+        // Input stock levels and prices for each product
+        for (int i = 0; i < NUM_PRODUCTS; i++) {
+            System.out.print("Enter stock level for product " + (i + 1) + ": ");
+            stockLevels[i] = scanner.nextInt(); // Read stock level
+            System.out.print("Enter price for product " + (i + 1) + ": ");
+            prices[i] = scanner.nextDouble(); // Read price
+        }
+
+        // Calculate total value of inventory
+        double totalValue = 0.0;
+        for (int i = 0; i < NUM_PRODUCTS; i++) {
+            totalValue += stockLevels[i] * prices[i]; // Sum up the total value
+        }
+
+        // Display total and average value
+        System.out.printf("Total value: $%.2f%nAverage value: $%.2f%n", totalValue, totalValue / NUM_PRODUCTS);
+
+        // Initialize variables to find highest and lowest value products
+        int highestIndex = 0, lowestIndex = 0;
+        double highestValue = stockLevels[0] * prices[0];
+        double lowestValue = highestValue;
+
+        // Find the highest and lowest value products
+        for (int i = 1; i < NUM_PRODUCTS; i++) {
+            double productValue = stockLevels[i] * prices[i];
+            if (productValue > highestValue) { 
+                highestValue = productValue; 
+                highestIndex = i; 
+            }
+            if (productValue < lowestValue) { 
+                lowestValue = productValue; 
+                lowestIndex = i; 
+            }
+        }
+
+        // Display the highest and lowest value products
+        System.out.printf("Highest value product: Product %d ($%.2f)%nLowest value product: Product %d ($%.2f)%n", 
+                           highestIndex + 1, highestValue, lowestIndex + 1, lowestValue);
+
+        scanner.close(); // Close the scanner to free resources
+    }
+}
