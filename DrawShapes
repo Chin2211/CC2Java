@@ -1,0 +1,34 @@
+import java.awt.*;
+import javax.swing.*;
+
+ 
+
+public class DrawShapes extends Canvas{
+
+ 
+
+      public void paint(Graphics an){
+            an.setColor(Color.RED);
+            //draw rectangle (x,y,width,height)
+            an.drawRect(50,50,150,100);
+            an.setColor(Color.BLUE);
+            an.fillRect(250,50,150,100);
+            an.setColor(Color.GREEN);
+            an.drawOval(450,50,100,100);
+            an.setColor(Color.RED);
+            an.fillOval(600,50,100,100);
+            an.drawLine(50, 200, 800, 200);
+            an.drawLine(750, 50, 750, 150);
+            an.drawLine(800, 50 , 800, 150);
+
+      }
+       public static void main(String[] args){
+            JFrame f = new JFrame("Christian's First Drawing");
+            DrawShapes canvas = new DrawShapes();
+            f.setSize(1500,500);
+            f.add(canvas);
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            f.setVisible(true);
+
+       }
+}
