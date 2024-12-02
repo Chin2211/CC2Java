@@ -43,3 +43,52 @@ public class WeatherDataTracker {
         scanner.close(); // Close the scanner to free resources
     }
 }
+
+
+
+
+
+import java.util.Scanner;
+
+public class WeatherDataTracker {
+    public static void main(String[] args) {
+        final int NUM_CITIES = 3; // Constant for the number of cities
+        final int NUM_DAYS = 7; // Constant for the number of days
+        double[][] temperatures = new double[NUM_CITIES][NUM_DAYS]; // 2D array to store temperature data
+        Scanner scanner = new Scanner(System.in); // Scanner object for user input
+
+        // Input temperature data for each city and day
+        for (int i = 0; i < NUM_CITIES; i++) { // Loop through each city
+            for (int j = 0; j < NUM_DAYS; j++) { // Loop through each day
+                // Prompt the user to enter temperature for a specific city and day
+                System.out.print("Enter temperature for City " + (i + 1) + " on Day " + (j + 1) + ": ");
+                temperatures[i][j] = scanner.nextDouble(); // Store the temperature in the array
+            }
+        }
+
+        // Calculate and display the average temperature for each city
+        for (int i = 0; i < NUM_CITIES; i++) { // Loop through each city
+            double sum = 0.0; // Initialize the sum for the city
+            for (int j = 0; j < NUM_DAYS; j++) { // Loop through each day for the city
+                sum += temperatures[i][j]; // Add the temperature to the sum
+            }
+            double average = sum / NUM_DAYS; // Calculate the average temperature
+            // Print the average temperature for the city
+            System.out.printf("Average temperature for City %d: %.2f%n", i + 1, average);
+        }
+
+        // Find and display the highest temperature for each city
+        for (int i = 0; i < NUM_CITIES; i++) { // Loop through each city
+            double highest = temperatures[i][0]; // Assume the first day's temperature is the highest
+            for (int j = 1; j < NUM_DAYS; j++) { // Loop through the rest of the days
+                if (temperatures[i][j] > highest) { // Check if the current temperature is higher
+                    highest = temperatures[i][j]; // Update the highest temperature
+                }
+            }
+            // Print the highest temperature for the city
+            System.out.printf("Highest temperature for City %d: %.2f%n", i + 1, highest);
+        }
+
+        scanner.close(); // Close the scanner to free resources
+    }
+}
