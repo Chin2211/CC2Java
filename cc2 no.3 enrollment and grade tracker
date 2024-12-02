@@ -41,3 +41,47 @@ public class CourseEnrollmentTracker {
         scanner.close(); // Close the scanner to free resources
     }
 }
+
+
+
+
+
+import java.util.Scanner;  // Import the Scanner class for user input
+
+public class CourseEnrollmentTracker {
+    public static void main(String[] args) {
+        final int NUM_STUDENTS = 5; // Number of students
+        final int NUM_SUBJECTS = 3; // Number of subjects each student is enrolled in
+        String[] studentNames = new String[NUM_STUDENTS]; // Array to store student names
+        double[][] grades = new double[NUM_STUDENTS][NUM_SUBJECTS]; // 2D array to store grades for each student and subject
+        Scanner scanner = new Scanner(System.in); // Create a scanner object to read input from the user
+
+        // Input student names
+        for (int i = 0; i < NUM_STUDENTS; i++) {
+            System.out.print("Enter name for Student " + (i + 1) + ": ");
+            studentNames[i] = scanner.nextLine(); // Store the entered name in the studentNames array
+        }
+
+        // Input grades for each student in each subject
+        for (int i = 0; i < NUM_STUDENTS; i++) {
+            System.out.println("Enter grades for " + studentNames[i] + ":");
+            for (int j = 0; j < NUM_SUBJECTS; j++) {
+                System.out.print("Grade for Subject " + (j + 1) + ": ");
+                grades[i][j] = scanner.nextDouble(); // Store the grade entered for each subject in the grades array
+            }
+            scanner.nextLine(); // Consume the leftover newline character after reading a number
+        }
+
+        // Calculate and display average grades for each student
+        for (int i = 0; i < NUM_STUDENTS; i++) {
+            double sum = 0.0; // Variable to store the sum of grades for a student
+            for (int j = 0; j < NUM_SUBJECTS; j++) {
+                sum += grades[i][j]; // Add the grade for each subject to the sum
+            }
+            double average = sum / NUM_SUBJECTS; // Calculate the average by dividing the sum by the number of subjects
+            System.out.printf("Average grade for %s: %.2f%n", studentNames[i], average); // Display the average grade with 2 decimal places
+        }
+
+        scanner.close(); // Close the scanner object to free up resources
+    }
+}
