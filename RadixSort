@@ -1,0 +1,101 @@
+import java.util.Random;
+
+public class RadixSort {
+    static int ctr = 0; // Global counter variable
+
+    public static void main(String[] args) {
+        ctr++; // Increment for the semicolon
+        int[] arr = new int[1000]; // Array of 1000 integers
+        ctr++; // Increment for the semicolon
+
+        // Fill the array with random integers
+        Random rand = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            ctr++; // Increment for the for loop
+            arr[i] = rand.nextInt(10000); // Random integers between 0 and 9999
+            ctr++; // Increment for the semicolon
+        }
+
+        // Perform Radix Sort
+        radixSort(arr);
+
+        // Print sorted array (optional)
+        for (int num : arr) {
+            ctr++; // Increment for the for loop
+            System.out.println(num); // Print each number
+            ctr++; // Increment for the semicolon
+        }
+
+        // Print the counter value
+        System.out.println("Counter: " + ctr); // Print the counter
+        ctr++; // Increment for the semicolon
+    }
+
+    // Main function to perform radix sort
+    static void radixSort(int[] arr) {
+        ctr++; // Increment for the semicolon
+        int max = getMax(arr); // Find the maximum number
+        ctr++; // Increment for the semicolon
+
+        // Perform sorting for each digit
+        int n = arr.length;
+        int[] output = new int[n];
+        int exp = 1;
+
+        while (max / exp > 0) {
+            ctr++; // Increment for the while loop
+
+            int[] count = new int[10];
+
+            // Count occurrences of each digit
+            for (int i = 0; i < n; i++) {
+                ctr++; // Increment for the for loop
+                count[(arr[i] / exp) % 10]++;
+                ctr++; // Increment for the semicolon
+            }
+
+            // Update count[i] to contain actual positions
+            for (int i = 1; i < 10; i++) {
+                ctr++; // Increment for the for loop
+                count[i] += count[i - 1];
+                ctr++; // Increment for the semicolon
+            }
+
+            // Build output array
+            for (int i = n - 1; i >= 0; i--) {
+                ctr++; // Increment for the for loop
+                output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+                ctr++; // Increment for the semicolon
+                count[(arr[i] / exp) % 10]--;
+                ctr++; // Increment for the semicolon
+            }
+
+            // Copy output array to arr
+            for (int i = 0; i < n; i++) {
+                ctr++; // Increment for the for loop
+                arr[i] = output[i];
+                ctr++; // Increment for the semicolon
+            }
+
+            exp *= 10;
+            ctr++; // Increment for the semicolon
+        }
+    }
+
+    // Function to get the maximum value in the array
+    static int getMax(int[] arr) {
+        ctr++; // Increment for the semicolon
+        int max = arr[0]; // Assume first element is the max
+        ctr++; // Increment for the semicolon
+
+        for (int i = 1; i < arr.length; i++) {
+            ctr++; // Increment for the for loop
+            if (arr[i] > max) {
+                ctr++; // Increment for the semicolon
+                max = arr[i]; // Update max
+                ctr++; // Increment for the semicolon
+            }
+        }
+        return max; // Return the maximum value
+    }
+}
