@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class ArrayAddressCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input number of dimensions
+        System.out.print("Enter the number of dimensions: ");
+        int n = scanner.nextInt();
+
+        // Input base address
+        System.out.print("Enter the base address (Alpha): ");
+        int baseAddress = scanner.nextInt();
+
+        // Input element size
+        System.out.print("Enter the size of each element (in bytes): ");
+        int elementSize = scanner.nextInt();
+
+        // Input upper bounds for each dimension
+        int[] upperBounds = new int[n];
+        System.out.println("Enter the upper bounds for each dimension:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Dimension " + (i + 1) + " upper bound: ");
+            upperBounds[i] = scanner.nextInt();
+        }
+
+        // Input target indices for each dimension
+        int[] targetIndices = new int[n];
+        System.out.println("Enter the target indices for each dimension:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Dimension " + (i + 1) + " index: ");
+            targetIndices[i] = scanner.nextInt();
+        }
+
+        // Validate indices
+        for (int i = 0; i < n; i++) {
+            if (targetIndices[i] < 0 || targetIndices[i] >= upperBounds[i]) {
+                System.out.println("Error: Index out of bounds for dimension " + (i + 1));
+                return;
+            }
+        }
+
+        // Calculate the address
+        int address = baseAddress;
+        int coefficient = elementSize;
+
+        for (int i = n - 1; i >= 0; i--) {
+            address += targetIndices[i] * coefficient;
+            coefficient *= upperBounds[i];
+        }
+
+        // Output the result
+        System.out.println("The address of the target element is: " + address);
+    }
+}
