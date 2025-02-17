@@ -1,0 +1,70 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class ExpressionConverter {
+
+    private static boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/';
+    }
+
+    private static int precedence(char c) {
+        switch (c) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            default:
+                return -1;
+        }
+    }
+
+    public static String infixToPostfix(String infix) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder postfix = new StringBuilder();
+
+        for (char c : infix.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                postfix.append(c);
+            } else if (c == '(') {
+                stack.push(c);
+            } else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    postfix.append(stack.pop());
+                }
+                stack.pop();
+            } else if (isOperator(c)) {
+                while (!stack.isEmpty() && precedence(stack.peek()) >= precedence(c)) {
+                    postfix.append(stack.pop());
+                }
+                stack.push(c);
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            postfix.append(stack.pop());
+        }
+        return postfix.toString();
+    }
+
+    public static String infixToPrefix(String infix) {
+        String reversedInfix = new StringBuilder(infix).reverse().toString();
+        reversedInfix = reversedInfix.replace('(', 'X').replace(')', '(').replace('X', ')');
+        String reversedPostfix = infixToPostfix(reversedInfix);
+        return new StringBuilder(reversedPostfix).reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter infix: ");
+        String infix = scanner.nextLine();
+        scanner.close();
+
+        String postfix = infixToPostfix(infix);
+        String prefix = infixToPrefix(infix);
+
+        System.out.println("Prefix is: " + prefix);
+        System.out.println("Postfix is: " + postfix);
+    }
+}
